@@ -1,0 +1,61 @@
+.sourceCode > a {
+    text-decoration: none;
+}
+
+.sourceCode > a:hover {
+    color: unset;
+}
+
+.sourceLine {
+    color: var(--main-txt-color);
+}
+
+
+.kw {
+    color: var(--highl-txt-color);
+}
+
+.op {
+    color: var(--main-txt-color);
+}
+
+.bu {
+    color: #7F98C0;
+}
+
+.dt {
+    color: lightblue;
+}
+
+.cf {
+    color: #D46A6A;
+}
+
+.dv,  .bn,  .fl {
+    color: #D336;
+}
+
+.ch {
+    color: #DC32;
+}
+
+.st {
+    color: var(--highl-txt-color);
+}
+
+.co {
+color: #93A1A1;
+}
+.ot {
+color: #A578;
+}
+.al {
+color: #CB4B; font-weight: bold;
+}
+.fu {
+color: #DCCA6A;
+}
+
+.er {
+color: #D30102; font-weight: bold;
+}

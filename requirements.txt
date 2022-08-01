@@ -1,0 +1,8 @@
+cached-property==1.5.2
+cffi==1.14.5
+importlib-metadata==3.10.0
+pkg-resources==0.0.0
+pycparser==2.20
+pygit2==1.5.0
+typing-extensions==3.7.4.3
+zipp==3.4.1

@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+set -e
+
+assembleVersions() {
+    venv/bin/python scripts/py/run.py
+}
+
+makePages() {
+    bash scripts/bash/makePages.bash
+}
+
+
+isAutocommit() {
+
+
+    if [[ "$(ps -ocommand= -p $PPID)" == "git commit --amend -m <git-blog autocommit>" ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+autoCommit() {
+    git add -A
+    git commit --amend -m '<git-blog autocommit>'
+}
+
+main() {
+
+    if isAutocommit ;then
+        exit 0
+    else
+        assembleVersions
+        if [[ "$?" == 0 ]]; then
+            makePages
+            autoCommit
+        fi
+        git checkout main
+    fi
+}
+
+main

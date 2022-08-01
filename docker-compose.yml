@@ -1,0 +1,23 @@
+version: '3.5'
+services:
+  web:
+    image: git-blog:latest
+    build: .
+    container_name: git-blog
+    restart: always
+    network_mode: host
+    volumes:
+        - ./static:/usr/share/nginx/html/blog/static:ro
+    # networks:
+      # - frontend
+    # ports:
+    #     - "1312:80"
+        #
+# networks:
+#   frontend:
+#     external: true
+# #   default:
+# #     external:
+# #       name: frontend
+
+

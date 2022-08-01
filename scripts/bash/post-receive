@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+set -e
+
+deploy() {
+
+    local target=("$(pwd)"/../git-blog-work/)
+
+    while read oldrev newrev rev; do
+        if [[ "${rev##*/}" == publish ]]; then
+            # echo '$GIT_DIR: '"$GIT_DIR"
+            # echo 'pwd: '"$(pwd)"
+            echo 'Recieved push to publish, copying repo to target:'
+            echo "${target:?}"
+            git --work-tree="$target" --git-dir="$(pwd)" checkout -f
+            echo 'done.'
+            echo 'Changing dir to target'
+            cd "${target:?}"
+            # Making shure no container is running
+            docker-compose down && \
+                docker-compose -f docker-compose.prod.yml up --build -d
+        else
+            echo 'Pushed to '"${rev##*/}"', which is not publish.'
+        fi
+    done
+}
+
+main() {
+    deploy
+}
+
+main
+
+

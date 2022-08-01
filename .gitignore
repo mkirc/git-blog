@@ -1,0 +1,4 @@
+venv/
+*.swp
+tmp/*
+**/__pycache__/

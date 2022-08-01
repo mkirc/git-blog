@@ -1,0 +1,19 @@
+version: '3.5'
+services:
+  web:
+    image: git-blog:latest
+    build: .
+    container_name: git-blog
+    restart: always
+    volumes:
+        - ./static:/usr/share/nginx/html/blog/static:ro
+
+
+    networks:
+      - frontend
+
+networks:
+  frontend:
+    external: true
+
+
